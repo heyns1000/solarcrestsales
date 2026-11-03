@@ -27,6 +27,16 @@ The instructed Crest wholesale price is **R5,216.52 per unit excluding VAT**. Th
 
 The displayed Crest range image is recorded as 125L in the original source. Confirm the exact 150L model, photograph and supplied components before publishing or accepting an order. The Hi Tech capacities share a catalogue range photograph; this is not proof of two different variant photographs.
 
+## Products page
+
+`products.html` lists the Crest Solar 2026 range: 18 products with catalogue artwork, search, categories, the specification viewer, theme controls and the 11 draft languages. It also covers business and project enquiries, availability, delivery and installation, warranty, a quotation request builder and all 20 catalogue pages (`assets/catalogue/` plus the snapshots embedded in the page).
+
+- **No prices are published on this page.** Every product reads "Price on written quotation". Supplier quotation prices stay private.
+- **Unconfirmed terms stay unconfirmed.** Stock, delivery, installation, warranty and quotation validity are stated as confirmed in writing per order.
+- **Page 19 of the catalogue** is an Amanzi borehole advertisement. It is shown separately and is not part of the Crest range.
+- **The quotation builder sends nothing.** It prepares an e-mail or WhatsApp draft that the customer reviews and sends.
+- **Build:** `node scripts/prepare-static.mjs` now also copies `products.html` and `assets/catalogue/` to `dist/`.
+
 ## Logo source
 
 The uploaded original logo is `assets/crest-logo.jpg`. This README references that exact repository path. Do not redraw, recolour, crop the trademark, add a backing box or apply a filter.

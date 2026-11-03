@@ -16,6 +16,9 @@ if(digest(await readFile(outputLogo))!==digest(logo))throw Error('Logo byte-pres
 const landing=(await exists(join(root,'index.html')))?join(root,'index.html'):join(sourceDir,'index.html');
 const wholesale=(await exists(join(sourceDir,'wholesale.html')))?join(sourceDir,'wholesale.html'):(await exists(join(sourceDir,'wholesale')))?join(sourceDir,'wholesale'):join(root,'wholesale.html');
 const sources=[[landing,join(outputDir,'index.html')],[wholesale,join(outputDir,'wholesale.html')]];
+if(await exists(join(root,'products.html')))sources.push([join(root,'products.html'),join(outputDir,'products.html')]);
+// catalogue page images used by products.html are copied byte for byte
+if(await exists(join(root,'assets','catalogue'))){const {readdir}=await import('node:fs/promises');await mkdir(join(outputDir,'assets','catalogue'),{recursive:true});for(const f of await readdir(join(root,'assets','catalogue')))await writeFile(join(outputDir,'assets','catalogue',f),await readFile(join(root,'assets','catalogue',f)));}
 const scripts=text=>[...text.matchAll(/<script\b[^>]*>[\s\S]*?<\/script\s*>/gi)].map(x=>x[0]);
 const prepared=[];
 for(const [source,target] of sources){
